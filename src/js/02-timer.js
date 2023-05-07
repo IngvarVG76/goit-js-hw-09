@@ -19,9 +19,8 @@ const timerEl = {
   seconds: document.querySelector('[data-seconds]'),
 };
 
-let timerId;
 
-function convertMs(ms) {
+const convertMs = (ms) => {
   // Number of milliseconds per unit of time
   const second = 1000;
   const minute = second * 60;
@@ -40,15 +39,14 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-console.log(convertMs(100000));
-
 const updateTimer = () => {
-  const selectedDates = datePicker.selectedDates;
+  const {selectedDates} = datePicker;
   const targetDate = new Date(selectedDates[0].getTime());
   const timeRemaining = targetDate - new Date();
 
   if (timeRemaining <= 0) {
-    clearInterval(timerId);
+      clearInterval(timerId);
+      Notiflix.Notify.success('Param-param-pam - Piw!');
     return;
   }
 
@@ -69,9 +67,7 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
-      console.log(selectedDates[0]);
-      const selectedDate = selectedDates[0];
+  onClose([selectedDate]) {
       const currentDate = new Date();
       if (selectedDate < currentDate) {
         Notiflix.Notify.failure('Please choose a date in the future');

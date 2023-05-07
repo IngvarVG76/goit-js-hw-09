@@ -10,6 +10,8 @@ function getRandomHexColor() {
 
 stopBtnEl.disabled = true;
 
+let timerId;
+
 startBtnEl.addEventListener('click', () => {
   startBtnEl.disabled = true;
   stopBtnEl.disabled = false;

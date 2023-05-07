@@ -38,6 +38,8 @@ const convertMs = ms => {
   return { days, hours, minutes, seconds };
 };
 
+let timerId;
+
 const updateTimer = () => {
   const { selectedDates } = datePicker;
   const targetDate = new Date(selectedDates[0].getTime());

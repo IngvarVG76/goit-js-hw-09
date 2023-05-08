@@ -8,7 +8,7 @@ formEl.addEventListener('submit', event => {
   const step = parseInt(formEl.elements.step.value);
   const amount = parseInt(formEl.elements.amount.value);
 
-  for (let i = 0; i < amount; i++) {
+  for (let i = 1; i <= amount; i++) {
     createPromise(i, delay + i * step)
       .then(({ position, delay }) => {
         console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -25,7 +25,7 @@ formEl.addEventListener('submit', event => {
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     const shouldResolve = Math.random() > 0.3;
-    
+
     setTimeout(() => {
       if (shouldResolve) {
         resolve({ position, delay });

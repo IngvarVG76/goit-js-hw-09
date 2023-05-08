@@ -39,6 +39,7 @@ const convertMs = ms => {
 };
 
 let timerId;
+console.log(timerId);
 
 const updateTimer = () => {
   const { selectedDates } = datePicker;
@@ -46,8 +47,10 @@ const updateTimer = () => {
   const timeRemaining = targetDate - new Date();
 
   if (timeRemaining <= 0) {
+      if (timerId) {
+          Notiflix.Notify.success('Param-param-pam - Piw!');
+      }
     clearInterval(timerId);
-    Notiflix.Notify.success('Param-param-pam - Piw!');
     return;
   }
 
